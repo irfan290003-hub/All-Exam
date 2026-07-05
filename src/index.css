@@ -156,3 +156,43 @@ body {
 .rich-text tr:nth-child(even) {
   background-color: #f8fafc;
 }
+/* ===== Responsive Tables ===== */
+
+.rich-text table,
+.post-content table,
+article table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+
+.rich-text th,
+.rich-text td,
+.post-content th,
+.post-content td,
+article th,
+article td {
+  min-width: 140px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .rich-text table,
+  .post-content table,
+  article table {
+    font-size: 14px;
+  }
+
+  .rich-text th,
+  .rich-text td,
+  .post-content th,
+  .post-content td,
+  article th,
+  article td {
+    padding: 10px;
+  }
+}
