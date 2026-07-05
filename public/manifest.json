@@ -1,0 +1,17 @@
+{
+  "short_name": "ALL EXAM",
+  "name": "ALL EXAM - Premium Sarkari Portal",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'%3E%3Cpath d='M32 4 L54 10 V32 C54 45.3 44.5 54.5 32 58 C19.5 54.5 10 45.3 10 32 V10 L32 4 Z' fill='%232563EB' stroke='%230F172A' stroke-width='2.5'/%3E%3Cpath d='M32 38 C26.5 35.5 19 35 15.5 36 V24 C19 23 26.5 23.5 32 26 V38 Z' fill='%23FFFFFF'/%3E%3Cpath d='M32 38 C37.5 35.5 45 35 48.5 36 V24 C45 23 37.5 23.5 32 26 V38 Z' fill='%23FFFFFF'/%3E%3Cpath d='M32 15 L40 23 H36 V33 H28 V23 H24 L32 15 Z' fill='%23FBBF24' stroke='%230F172A' stroke-width='1.5'/%3E%3Cpath d='M32 8 L46 12 L32 16 L18 12 Z' fill='%230F172A' stroke='%23FFFFFF' stroke-width='1.2'/%3E%3C/svg%3E",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0F172A",
+  "theme_color": "#0F172A",
+  "display": "standalone",
+  "orientation": "portrait"
+}
