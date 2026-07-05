@@ -4,6 +4,8 @@ import cors from "cors";
 import helmet from "helmet";
 import multer from "multer";
 import path from "path";
+import { v2 as cloudinary } from "cloudinary";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
 import fs from "fs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -12,7 +14,11 @@ import { createServer as createViteServer } from "vite";
 
 // Load environment variables
 dotenv.config();
-
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 const app = express();
 app.set("trust proxy", true);
 const PORT = parseInt(process.env.PORT || "3000", 10);
@@ -340,20 +346,19 @@ const authenticateAdmin = (req: Request, res: Response, next: NextFunction): voi
 };
 
 // Multer Storage Configuration for Image Uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadsDir);
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, uniqueSuffix + path.extname(file.originalname));
-  },
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: async (req, file) => ({
+    folder: "allexam",
+    allowed_formats: ["jpg", "jpeg", "png", "webp", "gif"],
+    public_id: `${Date.now()}-${file.originalname.split(".")[0]}`,
+  }),
 });
 
 const upload = multer({
-  storage,
+    storage: storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
-  fileFilter: (req, file, cb) => {
+  fileFilter: (req, file, cb) => {0
     const allowedTypes = /jpeg|jpg|png|gif|webp/;
     const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
     const mimetype = allowedTypes.test(file.mimetype);
@@ -872,8 +877,12 @@ app.post(
         return;
       }
       // Return file path relative to host, e.g. /uploads/filename.png
-      const relativePath = `/uploads/${req.file.filename}`;
-      res.json({ success: true, imageUrl: relativePath });
+        const imageUrl = (req.file as any).path;
+
+    res.json({
+  success: true,
+  imageUrl,
+});
     } catch (err: any) {
       res.status(500).json({ error: err.message });
     }
