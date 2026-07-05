@@ -915,7 +915,7 @@ app.post(
 app.get("/robots.txt", (req: Request, res: Response) => {
   const host = req.get("host") || "localhost:3000";
   const protocol = req.secure ? "https" : "http";
-  const sitemapUrl = `${protocol}://${host}/sitemap.xml`;
+  const sitemapUrl = "https://www.allexam.org/sitemap.xml";
   res.type("text/plain");
   res.send(`User-agent: *
 Allow: /
@@ -928,7 +928,7 @@ app.get("/sitemap.xml", async (req: Request, res: Response) => {
   try {
     const host = req.get("host") || "localhost:3000";
     const protocol = req.secure ? "https" : "http";
-    const baseUrl = `${protocol}://${host}`;
+    const baseUrl = "https://www.allexam.org";
 
     // Get all published posts for sitemap links
     const posts = await ExamItem.find({ status: "Published" }, "_id slug updatedAt category").lean();
