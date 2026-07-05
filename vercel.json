@@ -9,6 +9,14 @@
       "destination": "https://all-exam.onrender.com/uploads/$1"
     },
     {
+      "source": "/sitemap.xml",
+      "destination": "https://all-exam.onrender.com/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "https://all-exam.onrender.com/robots.txt"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
