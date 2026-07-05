@@ -330,13 +330,18 @@ export default function AdminPanel() {
     setLoginError(null);
     setLoginLoading(true);
 
+    
     try {
-      const res = await fetch("/api/admin/login", {
+    const res = await fetch("https://all-  exam.onrender.com/api/admin/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: usernameInput, password: passwordInput }),
-      });
-
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            username: usernameInput,
+            password: passwordInput,
+        }),
+    });
       const data = await res.json();
       if (res.ok && data.success) {
         localStorage.setItem("adminToken", data.token);
