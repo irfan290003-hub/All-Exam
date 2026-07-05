@@ -26,7 +26,7 @@ import { ExamItem, DashboardStats, ImportantDate } from "../types";
 import Logo, { LogoIcon } from "./Logo";
 import SearchableDropdown from "./SearchableDropdown";
 import SarkariYojanaManager from "./SarkariYojanaManager";
-
+const API_URL = "https://all-exam.onrender.com";
 const getFullUrl = (url?: string) => {
   if (!url) return "";
   if (url.startsWith("http://") || url.startsWith("https://")) return url;
@@ -332,7 +332,7 @@ export default function AdminPanel() {
 
     
     try {
-    const res = await fetch("https://all-  exam.onrender.com/api/admin/login", {
+    const res = await fetch(`${API_URL}/api/admin/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -365,7 +365,12 @@ export default function AdminPanel() {
 
   const authFetch = async (input: RequestInfo | URL, init?: RequestInit) => {
     try {
-      const res = await fetch(input, init);
+      const url =
+  typeof input === "string" && input.startsWith("/api")
+    ? `${API_URL}${input}`
+    : input;
+
+const res = await fetch(url, init);
       if (res.status === 401 || res.status === 403) {
         localStorage.removeItem("adminToken");
         setToken(null);
