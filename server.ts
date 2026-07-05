@@ -945,6 +945,41 @@ app.get("/sitemap.xml", async (req: Request, res: Response) => {
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+  <loc>${baseUrl}/about</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+
+<url>
+  <loc>${baseUrl}/contact</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.5</priority>
+</url>
+
+<url>
+  <loc>${baseUrl}/privacy-policy</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+
+<url>
+  <loc>${baseUrl}/terms-and-conditions</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+
+<url>
+  <loc>${baseUrl}/disclaimer</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+
+<url>
+  <loc>${baseUrl}/dmca</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
 `;
 
     for (const post of posts) {
