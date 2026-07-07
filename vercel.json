@@ -9,15 +9,15 @@
       "destination": "https://all-exam.onrender.com/uploads/$1"
     },
     {
-      "source": "/sitemap.xml",
-      "destination": "https://all-exam.onrender.com/sitemap.xml"
-    },
-    {
       "source": "/robots.txt",
       "destination": "https://all-exam.onrender.com/robots.txt"
     },
     {
-      "source": "/(.*)",
+      "source": "/sitemap.xml",
+      "destination": "https://all-exam.onrender.com/sitemap.xml"
+    },
+    {
+      "source": "/((?!api|uploads|robots.txt|sitemap.xml).*)",
       "destination": "/index.html"
     }
   ]

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
+import SEO from "./SEO";
 import {
   Search,
   Filter,
@@ -176,6 +177,13 @@ export default function Home() {
   const showListResults = searchVal || categoryVal || stateVal || qualificationVal || sortVal;
 
   return (
+    <>
+  <SEO
+    title="ALL EXAM – Sarkari Result, Govt Jobs, Admit Card, Answer Key & Recruitment"
+    description="Get latest Sarkari Result, Govt Jobs, Admit Card, Answer Key, Admission, Exam Date, Syllabus, and Government Recruitment updates on ALL EXAM."
+    path="/"
+  />
+
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 space-y-8">
       {/* 1. Hero Search Section */}
       <div className="relative rounded-2xl bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 py-12 px-6 sm:px-12 text-center text-white shadow-xl overflow-hidden">
@@ -767,6 +775,7 @@ export default function Home() {
           </div>
         </div>
       )}
-    </div>
-  );
+       </div>
+  </>
+);
 }

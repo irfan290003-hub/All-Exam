@@ -16,7 +16,7 @@ interface SEOProps {
 export default function SEO({ title, description, path, breadcrumbs, customJsonLd }: SEOProps) {
   useEffect(() => {
     // 1. Title
-    const formattedTitle = `${title} | ALL EXAM - Premium Sarkari Job Portal`;
+    const formattedTitle = `${title} | ALL EXAM - Sarkari Result, Govt Jobs, Admit Card & Results`;
     document.title = formattedTitle;
 
     // Helper to find or create a meta tag
@@ -57,7 +57,7 @@ export default function SEO({ title, description, path, breadcrumbs, customJsonL
     setMetaTag("name", "description", description);
 
     // 3. Canonical URL
-    const canonicalUrl = `https://allexam.org${path}`;
+    const canonicalUrl = `https://www.allexam.org${path}`;
     setLinkTag("canonical", canonicalUrl);
 
     // 4. Open Graph

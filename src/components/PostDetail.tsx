@@ -210,6 +210,7 @@ export default function PostDetail() {
         }
 
         setItem(data);
+        
         setLoading(false);
         
         // Dynamic Canonical URL
@@ -846,7 +847,7 @@ export default function PostDetail() {
         
         {/* Left Column: Grid recruitment detail fields & Table structure */}
         <div className="lg:col-span-2 space-y-6">
-          {item.category === "Sarkari Yojana" ? (
+          {String(item.category) === "Sarkari Yojana" ? (
             renderSarkariYojanaLayout(item)
           ) : (
             <>
@@ -1047,7 +1048,7 @@ export default function PostDetail() {
               )}
 
               {/* Sarkari Yojana Specific Fields */}
-              {item.category === "Sarkari Yojana" && item.schemeType && (
+              {String(item.category) === "Sarkari Yojana" && item.schemeType && (
                 <div className="grid grid-cols-1 sm:grid-cols-3 p-4 gap-2">
                   <div className="text-xs font-bold uppercase tracking-wide text-slate-500">Scheme Type</div>
                   <div className="text-sm font-bold text-orange-600 sm:col-span-2">
@@ -1422,7 +1423,9 @@ export default function PostDetail() {
       {/* Related Notifications Section */}
       <div className="mt-12 border-t border-slate-200 pt-10 animate-fadeIn" id="related-notifications-section">
         <h2 className="text-xl font-black text-slate-900 mb-6 uppercase tracking-tight border-l-4 border-blue-600 pl-3">
-          {item.category === "Sarkari Yojana" ? "Related Government Schemes" : "Related Notifications"}
+          {String(item.category) === "Sarkari Yojana"
+  ? "Related Government Schemes"
+  : "Related Notifications"}
         </h2>
 
         {relatedLoading ? (
