@@ -941,11 +941,6 @@ app.get("/sitemap.xml", async (req: Request, res: Response) => {
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>${baseUrl}/admin</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
   <loc>${baseUrl}/about</loc>
   <changefreq>monthly</changefreq>
   <priority>0.5</priority>
