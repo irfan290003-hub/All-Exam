@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useSearchParams, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useSearchParams,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import SEO from "./SEO";
 import {
   Search,
@@ -25,6 +30,18 @@ import SearchableDropdown from "./SearchableDropdown";
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { slug } = useParams();
+
+const slugToCategory: Record<string, string> = {
+  exam: "Exam",
+  "admit-card": "Admit Card",
+  result: "Result",
+  "answer-key": "Answer Key",
+  syllabus: "Syllabus",
+  notice: "Notice",
+  news: "News",
+  "sarkari-yojana": "Sarkari Yojana",
+};
 
   // State management
   const [items, setItems] = useState<ExamItem[]>([]);
@@ -51,7 +68,10 @@ export default function Home() {
 
   // Search parameters
   const searchVal = searchParams.get("search") || "";
-  const categoryVal = searchParams.get("category") || "";
+  const categoryVal =
+  slug && slugToCategory[slug]
+    ? slugToCategory[slug]
+    : searchParams.get("category") || "";
   const stateVal = searchParams.get("state") || "";
   const qualificationVal = searchParams.get("qualification") || "";
   const pageVal = searchParams.get("page") || "1";
@@ -156,17 +176,33 @@ export default function Home() {
     updateParams({ search: searchInput.trim(), page: "1" });
   };
 
-  const updateParams = (updates: Record<string, string>) => {
-    const newParams = new URLSearchParams(searchParams);
-    Object.entries(updates).forEach(([key, value]) => {
-      if (value === "") {
-        newParams.delete(key);
-      } else {
-        newParams.set(key, value);
-      }
+  const slugify = (text: string) =>
+  text
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-");
+
+const updateParams = (updates: Record<string, string>) => {
+  const newParams = new URLSearchParams(searchParams);
+
+  Object.entries(updates).forEach(([key, value]) => {
+    if (value === "") {
+      newParams.delete(key);
+    } else {
+      newParams.set(key, value);
+    }
+  });
+
+  const category = newParams.get("category");
+
+  if (category) {
+    navigate(`/category/${slugify(category)}`, {
+      replace: true,
     });
+  } else {
     setSearchParams(newParams);
-  };
+  }
+};
 
   const clearAllFilters = () => {
     setSearchInput("");

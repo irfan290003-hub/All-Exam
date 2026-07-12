@@ -27,12 +27,13 @@ export default function App() {
         <Navbar />
 
         {/* Live Updates Ticker */}
-        <LiveTicker />
+        <LiveTicker />_
 
         {/* Content routing stage */}
         <main className="flex-1 pb-16">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/category/:slug" element={<Home />} />
             <Route path="/post/:id" element={<PostDetail />} />
             <Route path="/admin" element={<AdminPanel />} />
             
