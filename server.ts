@@ -1023,9 +1023,11 @@ async function startServer() {
     app.get("/post/:slug", async (req, res, next) => {
   try {
     const post = await ExamItem.findOne({
-      slug: req.params.slug,
-      status: "Published",
-    }).lean();
+  slug: req.params.slug,
+}).lean();
+
+console.log("Slug:", req.params.slug);
+console.log("Post:", post); 
 
     if (!post) {
       return next();
