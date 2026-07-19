@@ -1020,6 +1020,40 @@ async function startServer() {
     // Production mode
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
+    app.get("/post/:slug", async (req, res, next) => {
+  try {
+    const post = await ExamItem.findOne({
+      slug: req.params.slug,
+      status: "Published",
+    }).lean();
+
+    if (!post) {
+      return next();
+    }
+
+    const indexPath = path.join(distPath, "index.html");
+    let html = fs.readFileSync(indexPath, "utf8");
+
+    const title =
+      (post.metaTitle || post.title) + " | ALL EXAM";
+
+    const description =
+      post.metaDescription ||
+      post.briefOverview ||
+      "Latest government job updates on ALL EXAM.";
+
+    const url = `https://www.allexam.org/post/${post.slug}`;
+
+   html = html
+    .replace(/%%TITLE%%/g, title)
+     .replace(/%%DESCRIPTION%%/g, description)
+     .replace(/%%URL%%/g, url);
+
+      res.send(html);
+    } catch (err) {
+      next(err);
+    }
+    });
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
     });

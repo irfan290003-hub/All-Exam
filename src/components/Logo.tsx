@@ -9,7 +9,7 @@ interface LogoProps {
 }
 
 /**
- * Premium, scalable, professional SVG-based Logo Icon for ALL EXAM.
+ * scalable, professional SVG-based Logo Icon for ALL EXAM.
  * Features:
  * - A sturdy official crest shield (for trust, authority, government exams)
  * - An open book layout (representing knowledge, study, syllabus)
@@ -61,7 +61,7 @@ export function LogoIcon({ className = "h-10 w-10", size = "md" }: { className?:
         filter="url(#logoShadow)"
       />
 
-      {/* Inner shield highlight ring for a premium look */}
+      {/* Inner shield highlight ring for  look */}
       <path
         d="M32 8 L50 13 V31 C50 42.5 41.8 50.5 32 53.6 C22.2 50.5 14 42.5 14 31 V13 L32 8 Z"
         stroke="#60A5FA"
@@ -94,7 +94,7 @@ export function LogoIcon({ className = "h-10 w-10", size = "md" }: { className?:
         strokeLinejoin="round"
       />
 
-      {/* 4. Minimalist Premium Graduation Cap (representing Career Success and Academic Excellence) */}
+      {/* 4. Minimalist  Graduation Cap (representing Career Success and Academic Excellence) */}
       {/* Hovering elegantly above the arrow */}
       <path
         d="M32 8 L46 12 L32 16 L18 12 Z"

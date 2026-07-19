@@ -276,7 +276,7 @@ export default function PostDetail() {
           "name": "ALL EXAM",
           "url": window.location.origin,
           "logo": `${window.location.origin}/logo.png`,
-          "description": "Premium Sarkari Exam and government notifications portal in India."
+          "description": " Sarkari Exam and government notifications portal in India."
         };
 
         const breadcrumbSchema = {

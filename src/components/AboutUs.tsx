@@ -40,7 +40,7 @@ export default function AboutUs() {
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8" id="about-us-page">
       <SEO
         title="About Us"
-        description="Learn more about ALL EXAM, India's premium portal for Sarkari Results, Latest Jobs, Admit Cards, Exam Syllabus, and crucial Government Welfare Schemes (Sarkari Yojana)."
+        description="Learn more about ALL EXAM, India's portal for Sarkari Results, Latest Jobs, Admit Cards, Exam Syllabus, and crucial Government Welfare Schemes (Sarkari Yojana)."
         path="/about"
         breadcrumbs={breadcrumbs}
       />
@@ -77,7 +77,7 @@ export default function AboutUs() {
               Who We Are
             </h2>
             <p className="text-slate-600 text-sm leading-relaxed">
-              Established as an independent education-focused portal, <strong>ALL EXAM</strong> is India's premium repository of official notifications. We serve millions of job-seekers, students, and citizens daily, serving as a unified bridge between official government circulars and the public.
+              Established as an independent education-focused portal, <strong>ALL EXAM</strong> is India's repository of official notifications. We serve millions of job-seekers, students, and citizens daily, serving as a unified bridge between official government circulars and the public.
             </p>
             <p className="text-slate-600 text-sm leading-relaxed">
               We eliminate information asymmetry by crawling official gazettes, board websites, and administrative publications, translating complex bureaucratic announcements into highly readable, structured, and actionable guides.
@@ -148,7 +148,7 @@ export default function AboutUs() {
               <div className="flex gap-3">
                 <CheckCircle2 className="h-5 w-5 text-blue-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-sm text-slate-100">No Premium Paywalls</h4>
+                  <h4 className="font-bold text-sm text-slate-100">No Paywalls</h4>
                   <p className="text-slate-400 text-[11px] leading-relaxed">All listings, syllabus keys, answer worksheets, and results guides are, and always will be, 100% free for everyone.</p>
                 </div>
               </div>
