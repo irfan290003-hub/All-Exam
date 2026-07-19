@@ -24,6 +24,29 @@ app.set("trust proxy", true);
 const PORT = parseInt(process.env.PORT || "3000", 10);
 const JWT_SECRET = process.env.JWT_SECRET || "AllExam@2026SecureJWT123!";
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://allexamadmin:YYGdOfgn9mnl6MBC@cluster0.53pj1dn.mongodb.net/allexam?retryWrites=true&w=majority&appName=Cluster0";
+const INDEXNOW_KEY = "9c9200846aaf4eb6b726d8292cbd76b6";
+
+async function submitToIndexNow(url: string) {
+  try {
+    const response = await fetch("https://api.indexnow.org/indexnow", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        host: "www.allexam.org",
+        key: INDEXNOW_KEY,
+        keyLocation: `https://www.allexam.org/${INDEXNOW_KEY}.txt`,
+        urlList: [url],
+      }),
+    });
+
+    console.log("IndexNow Status:", response.status);
+    console.log("Submitted:", url);
+  } catch (error) {
+    console.error("IndexNow Error:", error);
+  }
+}
 
 // Login attempt rate limiting and lockouts
 interface RateLimitData {
@@ -812,6 +835,9 @@ app.post("/api/posts", authenticateAdmin, async (req: Request, res: Response) =>
 
     const newItem = new ExamItem(req.body);
     const savedItem = await newItem.save();
+    await submitToIndexNow(
+  `https://www.allexam.org/post/${savedItem.slug}`
+);
     res.status(201).json({ success: true, item: savedItem });
   } catch (err: any) {
     res.status(400).json({ error: err.message });
@@ -838,6 +864,11 @@ app.put("/api/posts/:id", authenticateAdmin, async (req: Request, res: Response)
       res.status(404).json({ error: "Item not found" });
       return;
     }
+    if (updatedItem) {
+  await submitToIndexNow(
+    `https://www.allexam.org/post/${updatedItem.slug}`
+  );
+}
 
     res.json({ success: true, item: updatedItem });
   } catch (err: any) {
@@ -1027,7 +1058,7 @@ async function startServer() {
 }).lean();
 
 console.log("Slug:", req.params.slug);
-console.log("Post:", post); 
+console.log("Post:", post);
 
     if (!post) {
       return next();
