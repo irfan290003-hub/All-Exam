@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../assets/logo.png";
 
 interface LogoProps {
   className?: string;
@@ -32,7 +33,7 @@ export function LogoIcon({ className = "h-10 w-10", size = "md" }: { className?:
       xmlns="http://www.w3.org/2000/svg"
       className={`${finalClass} select-none shrink-0`}
       aria-hidden="true"
-    >
+    > 
       <defs>
         {/* Modern high-contrast gradients */}
         <linearGradient id="shieldGrad" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
@@ -129,7 +130,11 @@ export default function Logo({ variant = "light", size = "md", iconOnly = false 
 
   return (
     <div className="flex items-center gap-3 group select-none">
-      <LogoIcon size={size} />
+      <img
+  src={logo}
+  alt="AllExam.org"
+  className="h-12 w-auto object-contain"
+/>
       
       {!iconOnly && (
         <div className="flex flex-col justify-center">
